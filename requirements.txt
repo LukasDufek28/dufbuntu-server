@@ -1,6 +1,0 @@
-Flask==2.3.2
-nahodny text
-XYZ
-Blablabla
-blablabla
-blaaaaaaaaaaa
