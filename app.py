@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from datetime import date
@@ -177,6 +177,14 @@ def calendar():
             summary['fat'] += food.fat * factor
         result.append(summary)
     return jsonify(result)
+
+@app.route('/')
+def serve_vue():
+    return send_from_directory('static', 'index.html')
+
+@app.route('/<path:path>')
+def serve_vue_files(path):
+    return send_from_directory('static', path)
 
 if __name__ == '__main__':
     with app.app_context():
