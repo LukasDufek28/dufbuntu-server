@@ -141,4 +141,37 @@ a {
 a:hover {
   color: var(--accent-pink);
 }
+
+/* Mobile styles */
+@media (max-width: 800px) {
+  .calendar-container {
+    padding: 1rem 0.5rem;
+  }
+  h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+  table {
+    font-size: 1rem;
+    max-width: 100vw;
+    min-width: 0;
+    border-radius: 12px;
+    margin-bottom: 1.2rem;
+    overflow-x: auto;
+    display: block;
+  }
+  th, td {
+    padding: 0.7rem 0.4rem;
+    font-size: 1rem;
+    min-width: 80px;
+  }
+  tr, thead, tbody {
+    display: table-row;
+    width: 100%;
+  }
+  a {
+    font-size: 1rem;
+    margin-top: 1rem;
+  }
+}
 </style>

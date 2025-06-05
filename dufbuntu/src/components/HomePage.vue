@@ -119,15 +119,19 @@ onMounted(() => {
               </select>
             </label>
           </div>
-          <div class="user-results" v-if="height && weight">
+          <!-- Always show the results box, with placeholders if no input -->
+          <div class="user-results always-visible">
             <div>
-              <strong>Ideal Weight:</strong> {{ idealWeight }} kg
+              <strong>Ideal Weight:</strong>
+              <span>{{ idealWeight || '—' }} kg</span>
             </div>
             <div>
-              <strong>Calories to maintain current weight:</strong> {{ dailyCalories }} kcal/day
+              <strong>Calories to maintain current weight:</strong>
+              <span>{{ dailyCalories || '—' }} kcal/day</span>
             </div>
             <div>
-              <strong>Calories for ideal weight:</strong> {{ idealCalories }} kcal/day
+              <strong>Calories for ideal weight:</strong>
+              <span>{{ idealCalories || '—' }} kcal/day</span>
             </div>
           </div>
         </form>
@@ -334,6 +338,17 @@ h2 {
   gap: 0.3rem;
 }
 
+.user-results.always-visible {
+  min-height: 4.5em;
+  margin-top: 0.5rem;
+  color: var(--accent-pink);
+  font-size: 1.08rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  justify-content: center;
+}
+
 h3 {
   font-size: 1.5rem;
   color: var(--primary);
@@ -364,5 +379,73 @@ h3 {
   align-items: center;
   gap: 2.5rem;
   transition: background 0.3s;
+}
+
+/* Mobile styles */
+@media (max-width: 800px) {
+  .main-container {
+    padding: 1rem 0.5rem;
+  }
+  .flex-row {
+    flex-direction: column;
+    gap: 1.2rem;
+    max-width: 100vw;
+  }
+  .meal-form-box,
+  .user-info-box {
+    max-width: 100vw;
+    min-width: 0;
+    border-radius: 12px;
+    padding: 1.1rem 0.7rem 0.7rem 0.7rem;
+  }
+  .meal-form-box {
+    max-height: 200px;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 0.7rem 0.7rem 0.7rem 0.7rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .user-info-box {
+    max-height: 200px;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 0.7rem 0.7rem 0.7rem 0.7rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .meal-form {
+    gap: 0.5rem;
+  }
+  .summary-box {
+    max-width: 100vw;
+    min-width: 0;
+    border-radius: 14px;
+    padding: 0.7rem 0.5rem;
+    font-size: 1.05rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  h2, h3 {
+    font-size: 1.3rem;
+    margin: 1rem 0 0.7rem 0;
+  }
+  .meal-form select,
+  .meal-form input[type="number"],
+  .user-info input,
+  .user-info select {
+    font-size: 1rem;
+    padding: 0.6rem 0.7rem;
+  }
+  .meal-form button {
+    font-size: 1rem;
+    padding: 0.7rem 0;
+  }
+  .user-fields {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 }
 </style>
